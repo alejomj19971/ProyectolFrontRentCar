@@ -35,7 +35,7 @@ export default function DisponibleCarro (props) {
     
     
         try {          
-          const response = await axios.delete(`https://vercel-backend-rent-car.vercel.app/api/cars/deletecar/${id}`);
+          const response = await axios.delete(`http://127.0.0.1:7000/api/cars/deletecar/${id}`);
           console.log(response.data.message,response.data.placa)
           /*if (response.data.error==false) 
           { 

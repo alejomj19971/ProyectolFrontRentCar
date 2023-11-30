@@ -47,7 +47,7 @@ export default function DevolucionCarro() {
   const traerNumeroRenta = async () => {
     try {
       const response = await axios.get(
-        `https://vercel-backend-rent-car.vercel.app/api/rents/listarentnumber`
+        `http://127.0.0.1:7000/api/rents/listarentnumber`
       );
 
       if (response != undefined) {
@@ -137,7 +137,7 @@ export default function DevolucionCarro() {
         try {
           console.log("pase por aqui antes del axios");
           const response = await axios.post(
-            `https://vercel-backend-rent-car.vercel.app/api/returns/returncar`,
+            `http://127.0.0.1:7000/api/returns/returncar`,
             datos
           );
           console.log(response.data.error);
@@ -195,8 +195,8 @@ export default function DevolucionCarro() {
           style={{
             marginBottom: 10,
             marginTop: 10,
-            fontSize: 25,
-            color: "#f16366",
+            fontSize: 27,
+            color: "#6366f1",
             textAlign: "center",
           }}
         >

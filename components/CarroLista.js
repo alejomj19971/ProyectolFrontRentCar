@@ -37,7 +37,7 @@ export default function CarroLista(props) {
     
     
         try {          
-          const response = await axios.delete(`https://vercel-backend-rent-car.vercel.app/api/cars/deletecar/${id}`);
+          const response = await axios.delete(`http://127.0.0.1:7000/api/cars/deletecar/${id}`);
           console.log(response.data.message,response.data.placa)
           /*if (response.data.error==false) 
           { 
@@ -76,7 +76,7 @@ export default function CarroLista(props) {
       <Text style={{margintTop:5,fontSize:15,textAlign:'center',color:carro.state?'#66f169':'#f16966'}} >Estado : {mensaje}</Text>
       <View style={{justifyContent:'space-between',alignContent:'space-between',display:'flex',flexDirection:'row'}}>
       <Button
-        style={[{width:'30%', marginTop: 10,marginLeft:5, backgroundColor: "#FFA500",border:'none',textAlign:'center' }]}
+        style={[{width:'40%', marginTop: 10,marginLeft:5, backgroundColor: "#FFA500",border:'none',textAlign:'center' }]}
         icon="pencil" 
         mode="outlined"
         onPress={irEditarCarro}
@@ -85,7 +85,7 @@ export default function CarroLista(props) {
       Editar
       </Button>
       <Button       
-        style={[{ width:'30%', marginTop: 10,marginRight:5, backgroundColor: "#f16366",border:'none',textAlign:'center' }]}
+        style={[{ width:'40%', marginTop: 10,marginRight:5, backgroundColor: "#f16366",border:'none',textAlign:'center' }]}
         icon="trash-can-outline" 
         mode="outlined"
         onPress={(id)=>eliminarVehiculo(carro.platenumber)}

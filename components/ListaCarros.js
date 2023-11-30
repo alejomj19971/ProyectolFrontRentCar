@@ -20,7 +20,7 @@ const irRegistroCarro=()=>{
 
 const traerCarros = async () => {
       try {
-        const response = await axios.get(`https://vercel-backend-rent-car.vercel.app/api/cars/listarcar`);
+        const response = await axios.get(`http://127.0.0.1:7000/api/cars/listarcar`);
 
         const listaCarros=response.data
         setCarros(listaCarros);
@@ -46,17 +46,17 @@ useEffect(() => {
 return(
     <View>
       
-    <Text
-        style={{ marginTop: 20, backgroundColor: "#ffffff",border:'none',color:'#6366f1',textAlign:'center' }}
+      <Text
+        style={{ fontSize:15,marginTop: 20, backgroundColor: "#ffffff",border:'none',color:'#6366f1',textAlign:'center' }}
         icon="send"
         mode="outlined"
-        onPress={traerCarros}
+        //onPress={()=>traerCarros()}
         labelStyle={{ color: "white" }}
  
     >
-       Actualizar Lista
+       Listado de Vehiculos
     </Text>
-
+    
     <SafeAreaView>
         <FlatList
         data={carros}

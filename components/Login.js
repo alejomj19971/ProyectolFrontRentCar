@@ -45,7 +45,7 @@ function Login(){
 
     }
     try {
-        const response = await axios.post(`https://vercel-backend-rent-car.vercel.app/api/users/login`,datos);
+        const response = await axios.post(`http://127.0.0.1:7000/api/users/login`,datos);
       
         if(response.data.error==false ||response.data.error==undefined ){
      
@@ -198,7 +198,7 @@ const { control, handleSubmit, formState: { errors }, reset } = useForm({
                 name="password"
                 />
         {errors.password?.type === "required" && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>Este Campo es Obligatorio</Text>}
-        {errors.password?.type === "pattern" && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>El Password Debe contener  números y letras</Text>}
+        {errors.password?.type === "pattern" && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>La contraseña debe contener números y letras</Text>}
 
     <Button
       style={[{ marginTop: 20, backgroundColor: "#6366f1",border:'none' }]}

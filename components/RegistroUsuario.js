@@ -59,7 +59,7 @@ const registrarUsuario = async (data) => {
 
   
 
-      const response = await axios.post(`https://vercel-backend-rent-car.vercel.app/api/users/registrar`,datos);
+      const response = await axios.post(`http://127.0.0.1:7000/api/users/registrar`,datos);
       console.log(response.data.error)
       if (response.data.error==false) 
       { 
@@ -108,7 +108,7 @@ const registrarUsuario = async (data) => {
   
     <View style={styles.container}>
       <View style={{padding:40,backgroundColor:'#FFFFFF',borderCurve:'continuous',borderRadius:20,border:'none',shadowRadius:2,shadowColor:'#6366f1'}}>
-        <Text variant="titleLarge" style={{marginBottom:10,marginTop:10,fontSize:25,color:'#f16366',textAlign:'center'}}>Registrate</Text>
+        <Text variant="titleLarge" style={{marginBottom:10,marginTop:10,fontSize:27,color:'#6366f1',textAlign:'center'}}>Registrate</Text>
 
         <Text style={{marginBottom :5, margintTop:5,textAlign:'center', color:errormessage?'#f16366':'#6366f1'  }}>
         {message}
@@ -167,7 +167,7 @@ const registrarUsuario = async (data) => {
             name="name"
         />
       {errors.name?.type === 'required' && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}} >Este Campo es Obligatorio</Text>}
-       {errors.name?.type === 'pattern' && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>Escriba un nombre solo con Letras y Espacios</Text>}
+       {errors.name?.type === 'pattern' && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>Escriba un nombre solo con letras y espacios</Text>}
 
 {/*contrasena */}
 <Controller
@@ -195,7 +195,7 @@ const registrarUsuario = async (data) => {
                 name="password"
                 />
         {errors.password?.type === "required" && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>Este Campo es Obligatorio</Text>}
-        {errors.password?.type === "pattern" && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>El Password Debe contener  números y letras</Text>}
+        {errors.password?.type === "pattern" && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>La contraseña debe contener números y letras</Text>}
   
 
        {/*palabraSecreta */}
@@ -226,7 +226,7 @@ const registrarUsuario = async (data) => {
             name="reserveword"
         />
       {errors.reserveword?.type === 'required' && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}} >Este Campo es Obligatorio</Text>}
-       {errors.reserveword?.type === 'pattern' && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>Escriba una palabra reservada  solo con Letras y Espacios</Text>}
+       {errors.reserveword?.type === 'pattern' && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>Escriba una palabra reservada  solo con letras y espacios</Text>}
 
        
         <Picker

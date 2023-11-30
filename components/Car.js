@@ -1,5 +1,5 @@
-import { View,Picker} from "react-native";
-import { useState } from "react";
+import { View,Picker,Image, Platform} from "react-native";
+import { useState,useEffect } from "react";
 import { styles } from "../assets/styles/allstyles";
 import { TextInput, Button,Text,Checkbox } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
@@ -7,7 +7,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { DatePickerInput } from 'react-native-paper-dates';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useForm, Controller } from 'react-hook-form';
+
 import axios from 'axios'
+
+//import * as ImagePicker from 'expo-image-picker';
+
 function Car(){
 
   // Funciones navegación
@@ -24,6 +28,8 @@ function Car(){
     const [errormessage, setErrorMessage] = useState(false);
     const [message, setMessage] = useState(''); 
     const [checked, setChecked] = useState(false);
+    //Imagen
+    const [image, setImage] = useState(null);
 
 
     //Controlador
@@ -40,6 +46,50 @@ function Car(){
 
 
   // Funciones 
+
+
+ /* const guardarImagen = async (file) => {
+    if (file){
+      const response1 = await fetch(file);
+      const blob = await response1.blob();
+      const file = new File([blob],` ${Date.now()}image.jpg`, { type: 'image/jpeg' });
+      const formData = new FormData();
+      formData.append('file', file);
+      try {
+  
+        const response = await axios.post(`http://127.0.0.1:7000/api/cars/images/single`,formData,{
+          headers: {
+              'Content-Type': 'multipart/form-data'}
+            
+        });
+        
+        if (response.data.error==false) 
+        { 
+            setErrorMessage(false);
+            setMessage('Imagen guardada');
+            reset();
+            setTimeout(() => {
+              setMessage('');
+          }, 2000)
+         
+        }
+        else {
+            setErrorMessage(true);
+            setMessage("No se guardo correctamente")
+            setTimeout(() => {
+                setMessage('');
+            }, 2000)
+  
+        }
+    } catch (error) {
+        console.log(error)
+        
+    }
+    finally {
+    }
+  }
+}*/
+   
 
   const registrarCarro = async (data) => {
     const {created,platenumber,brand,dailyvalue}=data
@@ -62,10 +112,11 @@ function Car(){
   
       try {
   
-        const response = await axios.post(`https://vercel-backend-rent-car.vercel.app/api/cars/crearcar`,datos);
+        const response = await axios.post(`http://127.0.0.1:7000/api/cars/crearcar`,datos);
         
         if (response.data.error==false) 
         { 
+           // guardarImagen(image);
             setErrorMessage(false);
             setMessage('Registro Exitoso');
             reset();
@@ -90,14 +141,30 @@ function Car(){
     }
     }
    
+
+    // Imagen
+   /* const pickImage = async () => {
+      // No permissions request is necessary for launching the image library
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
   
+      console.log(result);
+  
+      if (!result.canceled) {
+        setImage(result.assets[0].uri);
+      }
+    };*/
 
   
 
   return (
     <View style={styles.container}>
       <View style={{padding:40,backgroundColor:'#FFFFFF',borderCurve:'continuous',borderRadius:20,border:'none',shadowRadius:2,shadowColor:'#6366f1'}}>
-        <Text variant="titleLarge" style={{marginBottom:10,marginTop:10,fontSize:25,color:'#f16366',textAlign:'center'}}>Vehiculo</Text>
+        <Text variant="titleLarge" style={{marginBottom:10,marginTop:10,fontSize:27,color:'#6366f1',textAlign:'center'}}>Vehiculo</Text>
         
         <Text style={{marginBottom :5, margintTop:5,textAlign:'center', color:errormessage?'#f16366':'#6366f1'  }}>
         {message}
@@ -232,8 +299,15 @@ function Car(){
       onPress={() => {
         setChecked(!checked);
       }} />
-   
 
+     {/*Imagen*/}
+   {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor:'#ffff',color:"#6366f1",marginTop:10 }}>
+   
+      <Button  icon="camera" textColor="#6366f1" title="Pick an image from camera roll" onPress={pickImage} contentStyle={{ flexDirection: 'row-reverse' }}>
+        Agregar Imagen
+      </Button>
+      {image && <Image source={{ uri: image }} style={{ width: '70%', height: '70%' ,marginBottom:10,marginTop:5}} />}
+    </View> */}
 
       <Button
         style={[{ marginTop: 20, backgroundColor: "#6366f1",border:'none' }]}

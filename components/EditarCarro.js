@@ -64,7 +64,7 @@ const editarVehiculo = async (data) => {
   
       try {
   
-        const response = await axios.put(`https://vercel-backend-rent-car.vercel.app/api/cars/updatecar`,datos);
+        const response = await axios.put(`http://127.0.0.1:7000/api/cars/updatecar`,datos);
         console.log(response.data.error)
         if (response.data.error==false) 
         { 
@@ -109,7 +109,7 @@ const editarVehiculo = async (data) => {
   return (
     <View style={styles.container}>
     <View style={{padding:40,backgroundColor:'#FFFFFF',borderCurve:'continuous',borderRadius:20,border:'none',shadowRadius:2,shadowColor:'#6366f1'}}>
-      <Text variant="titleLarge" style={{marginBottom:10,marginTop:10,fontSize:25,color:'#f16366',textAlign:'center'}}>Editar Vehiculo</Text>
+      <Text variant="titleLarge" style={{marginBottom:10,marginTop:10,fontSize:27,color:'#6366f1',textAlign:'center'}}>Editar Vehiculo</Text>
       
       <Text style={{marginBottom :5, margintTop:5,textAlign:'center', color:errormessage?'#f16366':'#6366f1'  }}>
       {message}

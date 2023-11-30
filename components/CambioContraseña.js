@@ -32,7 +32,7 @@ const actualizarContraseña = async (data) => {
   
     try {
 
-      const response = await axios.patch(`https://vercel-backend-rent-car.vercel.app/api/users/restablecercontrasena
+      const response = await axios.patch(`http://127.0.0.1:7000/api/users/restablecercontrasena
       `,datos);
       console.log(response.data.error)
       if (response.data.error==false) 
@@ -168,7 +168,7 @@ return (
                 name="password"
                 />
         {errors.password?.type === "required" && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>Este Campo es Obligatorio</Text>}
-        {errors.password?.type === "pattern" && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>El Password Debe contener  números y letras</Text>}
+        {errors.password?.type === "pattern" && <Text style={{color:'#f16366',marginTop:3,textAlign:'center'}}>La contraseña debe contener números y letras</Text>}
   
 
 
